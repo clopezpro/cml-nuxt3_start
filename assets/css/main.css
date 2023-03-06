@@ -1,0 +1,14 @@
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dark body {
+  background-color: #091a28;
+  color: #ebf4f1;
+}
+.sepia body {
+  background-color: #f1e7d0;
+  color: #433422;
+}
