@@ -1,11 +1,9 @@
-
 <script setup>
 import {
 	alertVue
 } from "cml-components";
 const useAlert = useAlertStore();
 </script>
-
 <template>
 	<div>
 		<header>
@@ -21,6 +19,7 @@ const useAlert = useAlertStore();
 				:title="useAlert.title" 
 				:type="useAlert.variant"
 				/>
+			 <confirmDialogue/>
 		</main>
 		<footer>
 			<slot name="footer"> </slot>

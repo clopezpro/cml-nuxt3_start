@@ -50,6 +50,7 @@ export const useFormLogin = () => {
 			/* resetForm(); */
 		} catch (error) {
 			loading.value = false;
+			console.log(error);
 			console.log(error)
 			useAlert.setAlert({
 				show: true,
@@ -67,18 +68,20 @@ export const useFormLogin = () => {
 					body: { zone, ...form },
 					method: "POST",
 				});
-				if(error){   
-					throw error.value.data?.message || error.value.message;
+				if(error.value){   
+					throw error.value?.data?.message || error.value.message;
 				}
 				loading.value=false;    
 				if (data.value.result == 0) {
 					throw data.value.error;
 				}
 				const token = useCookie("token");
+			    await navigateTo("/sys/quoter/reader");
 				console.log(token.value);
 			/* resetForm(); */
 		} catch (error) {
 			loading.value = false;
+			console.log(error)
 			useAlert.setAlert({
 				show: true,
 				title: "Validacion en Servidor",
@@ -90,7 +93,7 @@ export const useFormLogin = () => {
     const resetForm=()=>{
         form.user=null
         form.password=null
-        form.objetives=[]
+        form.otherData = [];
     }
     return {
         validUser,

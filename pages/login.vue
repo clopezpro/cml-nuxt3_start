@@ -7,7 +7,7 @@
 				>
 					<!-- header -->
 					<header>
-						<p class="text-center text-xl text-orange-500">Conqui Gestion </p>
+						<p class="text-center text-xl text-orange-500">COTIZADOR LITE</p>
 					</header>
 					<!-- form -->
 					<div v-show="!FormLogin.existUS.value">
@@ -40,7 +40,6 @@
 									type="password"
 									autocomplete="current-password"
 									v-model="FormLogin.form.password"
-									
 								/>
 							</div>
 							<div class="flex-1 text-center"></div>
@@ -57,18 +56,15 @@
 							</div>
 						</div>
 					</div>
-					<div v-show="FormLogin.existUS.value">
+					<div v-show="FormLogin.form.otherData?.length>0">
 						<div>
 							<div class="text-center">
 								<p class="text-xs ml-1 text-yellow-600">
-									Este formulario se muestra porque tiene asignado mas de un CLUB, 
-									lo que seleccione sera usado como informacion por defecto en las acciones del Sistema,
-									Puede continuar si desea Y no seleccionar nada
+									Este formulario se muestra porque tiene asignada mas de un puesto de trabajo,
+									porfavor seleccione en el cual desea trabajar
 								</p>
 							</div>
-								
 							<div>
-							
 									<!-- <pre>{{emp }}</pre> -->
 									<!-- <p>{{ emp.objetive.identity }} {{ emp.objetive.full_name }}</p> -->
 									<!-- <div
@@ -90,7 +86,6 @@
 											class="text-md cursor-pointer w-full m-2 text-xs"
 											:for="tar._id"
 										>
-										
 											{{ tar.objetive.full_name }} {{ tar.objetive.identity }}
 										</label>
 									</div> -->
@@ -107,7 +102,6 @@
 							<button
 								class="bg-green-900 border border-gray-800 hover:bg-indigo-700 text-white font-bold py-2 px-4 mb-6 rounded"
 								type="button"
-								
 							>
 								CONTINUAR
 							</button>
@@ -123,15 +117,17 @@
 		</div>
 	</div>
 </template>
-
 <script setup>
 /* import { computed} from "vue";
 import { useAuthUserStore } from "@/stores/auth.js"; */
 /* import { onMounted } from 'vue'; */
-
 	const FormLogin=useFormLogin();
-
-
+    definePageMeta({
+        title: 'Login',
+        description: 'Logueate para acceder al sistema de Cotizacion',
+        middleware: ['autenticated'],
+        layout: "custom",
+    })
 </script>
 <style lang="postcss">
 * {
