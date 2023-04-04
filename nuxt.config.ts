@@ -17,6 +17,9 @@ export default defineNuxtConfig({
 		classPrefix: "",
 		classSuffix: "",
 	},
+	alias: {
+		pinia: "/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs",
+	},
 	css: ["@/assets/css/main.css"],
 	/* autoImports: ['defineStore', 'acceptHMRUpdate'], */
 	runtimeConfig: {
@@ -27,7 +30,7 @@ export default defineNuxtConfig({
 			USER: process.env.MONGO_USER,
 			PASS: process.env.MONGO_PASS,
 		},
-		SEED: process.env.SEED,
+		SEED: process.env.SEED=="false"?false:true,
 		PASS_TOKEN: process.env.PASS_TOKEN,
 		NODE_ENV: process.env.NODE_ENV,
 	},

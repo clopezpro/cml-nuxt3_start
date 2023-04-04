@@ -27,12 +27,13 @@ const APIS = [
 ];
 import { exa, M_apis } from "../model/system.js";
 const ADD_API=() => {
+	console.log("RUNN SEED")
 	APIS.forEach((rs) => {
 		M_apis.findOneAndUpdate(
 			{ resource: rs.resource },
 			rs,
-			{ upsert: true },
-			(err, doc) => {
+			{ upsert: true }).then(
+			(err,) => {
 				if (err) console.log(err);
 
 			}
